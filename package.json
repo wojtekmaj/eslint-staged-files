@@ -1,0 +1,43 @@
+{
+  "name": "eslint-staged-files",
+  "version": "1.0.0-alpha",
+  "description": "Run ESLint on staged files only.",
+  "main": "dist/eslint-staged-files.js",
+  "es6": "src/eslint-staged-files.js",
+  "scripts": {
+    "build": "babel src -d dist --ignore **/__tests__",
+    "prepublishOnly": "yarn run build",
+    "test": "yarn run test-eslint",
+    "test-eslint": "eslint src/ --ext .jsx,.js"
+  },
+  "keywords": [
+    "diff",
+    "eslint",
+    "git",
+    "lint",
+    "staged"
+  ],
+  "author": {
+    "name": "Wojciech Maj",
+    "email": "kontakt@wojtekmaj.pl"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "eslint": "^5.4.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist/",
+    "src/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wojtekmaj/eslint-staged-files.git"
+  }
+}
