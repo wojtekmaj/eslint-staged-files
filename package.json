@@ -1,6 +1,6 @@
 {
   "name": "eslint-staged-files",
-  "version": "1.0.0-alpha",
+  "version": "1.0.0-alpha.2",
   "description": "Run ESLint on staged files only.",
   "main": "dist/eslint-staged-files.js",
   "es6": "src/eslint-staged-files.js",
