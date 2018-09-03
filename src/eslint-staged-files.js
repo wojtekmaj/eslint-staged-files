@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { exec } = require('child_process');
 
 const gitDiff = exec('git diff --staged --diff-filter=ACMTUXB --name-only', { encoding: 'utf8' });
