@@ -1,8 +1,9 @@
 {
   "name": "eslint-staged-files",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "Run ESLint on staged files only.",
   "main": "dist/eslint-staged-files.js",
+  "bin": "dist/eslint-staged-files.js",
   "es6": "src/eslint-staged-files.js",
   "scripts": {
     "build": "babel src -d dist --ignore **/__tests__",
