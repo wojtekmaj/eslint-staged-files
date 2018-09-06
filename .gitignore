@@ -1,6 +1,7 @@
 .cache
 .idea
 .vscode
+.tmp
 dist
 coverage
 node_modules
