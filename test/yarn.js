@@ -1,5 +1,5 @@
 const { default: cmd } = require('./cmd');
 
-export const link = () => cmd('yarn link');
+export const link = async () => cmd('yarn link');
 
-export const unlink = () => cmd('yarn unlink');
+export const unlink = async () => cmd('yarn unlink');
