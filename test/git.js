@@ -21,15 +21,15 @@ export const gitCmd = (directoryPath, command, options) => new Promise((resolve,
   });
 });
 
-export const init = directoryPath => (
+export const init = async directoryPath => (
   gitCmd(directoryPath, `git init ${directoryPath}`)
 );
 
-export const stage = (directoryPath, what) => (
+export const stage = async (directoryPath, what) => (
   gitCmd(directoryPath, `git add ${what}`, { cwd: directoryPath })
 );
 
-export const stageAll = directoryPath => stage(directoryPath, '.');
+export const stageAll = async directoryPath => stage(directoryPath, '.');
 
 export const stageFiles = async (directoryPath, filePaths = []) => {
   const result = [];
@@ -44,14 +44,14 @@ export const stageFiles = async (directoryPath, filePaths = []) => {
   return result;
 };
 
-export const commit = (directoryPath, commitMessage = 'Commit') => (
+export const commit = async (directoryPath, commitMessage = 'Commit') => (
   gitCmd(directoryPath, `git commit -m "${commitMessage}"`, { cwd: directoryPath })
 );
 
-export const resetHard = directoryPath => (
+export const resetHard = async directoryPath => (
   gitCmd(directoryPath, 'git reset --hard', { cwd: directoryPath })
 );
 
-export const cleanFd = directoryPath => (
+export const cleanFd = async directoryPath => (
   gitCmd(directoryPath, 'git clean -fd', { cwd: directoryPath })
 );

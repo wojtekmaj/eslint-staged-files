@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs');
 const { default: cmd } = require('./cmd');
 
-export const createDirectory = (directoryPath = path.join('.', '.tmp')) => new Promise((resolve, reject) => {
+export const createDirectory = async (directoryPath = path.join('.', '.tmp')) => new Promise((resolve, reject) => {
   fs.mkdir(directoryPath, (error) => {
     if (error) {
       console.error(error);
@@ -14,7 +14,7 @@ export const createDirectory = (directoryPath = path.join('.', '.tmp')) => new P
   });
 });
 
-export const removeDirectory = directoryPath => cmd(`rimraf ${directoryPath}`);
+export const removeDirectory = async directoryPath => cmd(`rimraf ${directoryPath}`);
 
 export const createFile = (filePath, contents) => new Promise((resolve, reject) => {
   fs.writeFile(filePath, contents, (error) => {
