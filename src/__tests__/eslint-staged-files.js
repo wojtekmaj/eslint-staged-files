@@ -25,6 +25,8 @@ import {
   unlink,
 } from '../../test/yarn';
 
+jest.setTimeout(25000);
+
 const verbose = false;
 
 const log = (...args) => {

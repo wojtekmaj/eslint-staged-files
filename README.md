@@ -1,5 +1,5 @@
 
-![downloads](https://img.shields.io/npm/dt/eslint-staged-files.svg) ![build](https://img.shields.io/travis/wojtekmaj/eslint-staged-files/master.svg) ![dependencies](https://img.shields.io/david/wojtekmaj/eslint-staged-files.svg
+![downloads](https://img.shields.io/npm/dt/eslint-staged-files.svg) [![build](https://dev.azure.com/wojtekmaj/wojtekmaj/_apis/build/status/ESLint%20staged%20files)](https://dev.azure.com/wojtekmaj/wojtekmaj/_build/latest?definitionId=2) ![dependencies](https://img.shields.io/david/wojtekmaj/eslint-staged-files.svg
 ) ![dev dependencies](https://img.shields.io/david/dev/wojtekmaj/eslint-staged-files.svg) [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 
 # eslint-staged-files
