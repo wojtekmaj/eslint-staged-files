@@ -40,11 +40,17 @@ describe('ESLint staged files', () => {
   const run = async () => cmd('eslint-staged-files --no-color', { cwd: directoryPath }, verbose);
 
   beforeAll(async () => {
-    log('Linking eslint-staged-files command...');
-    await link();
+    try {
+      log('Linking eslint-staged-files command...');
+      await link();
+    } catch (err) {
+      console.error('Failed to link eslint-staged-file command');
+      throw err;
+    }
 
     log('Creating new directory...');
     directoryPath = await createDirectory();
+
     log('Initializing Git repository...');
     await init(directoryPath);
     log('Creating .eslintrc.json...');

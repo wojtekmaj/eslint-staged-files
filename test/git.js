@@ -2,13 +2,13 @@ const path = require('path');
 const fs = require('fs');
 const { default: cmd } = require('./cmd');
 
-export const gitCmd = (directoryPath, command, options) => new Promise((resolve, reject) => {
-  if (!directoryPath) {
+export const gitCmd = (command, options) => new Promise((resolve, reject) => {
+  if (!options.cwd) {
     reject(new Error('path attribute is required.'));
     return;
   }
 
-  fs.access(directoryPath, (error) => {
+  fs.access(options.cwd, (error) => {
     if (error) {
       console.error(error);
       reject(error);
@@ -21,15 +21,18 @@ export const gitCmd = (directoryPath, command, options) => new Promise((resolve,
   });
 });
 
-export const init = directoryPath => (
-  gitCmd(directoryPath, `git init ${directoryPath}`)
+export const init = async (directoryPath) => {
+  await gitCmd('git init', { cwd: directoryPath });
+  await gitCmd('git config core.autocrlf false', { cwd: directoryPath });
+  await gitCmd('git config user.email "ci@example.com"', { cwd: directoryPath });
+  await gitCmd('git config user.name "CI Tester"', { cwd: directoryPath });
+};
+
+export const stage = async (directoryPath, what) => (
+  gitCmd(`git add ${what}`, { cwd: directoryPath })
 );
 
-export const stage = (directoryPath, what) => (
-  gitCmd(directoryPath, `git add ${what}`, { cwd: directoryPath })
-);
-
-export const stageAll = directoryPath => stage(directoryPath, '.');
+export const stageAll = async directoryPath => stage(directoryPath, '.');
 
 export const stageFiles = async (directoryPath, filePaths = []) => {
   const result = [];
@@ -44,14 +47,14 @@ export const stageFiles = async (directoryPath, filePaths = []) => {
   return result;
 };
 
-export const commit = (directoryPath, commitMessage = 'Commit') => (
-  gitCmd(directoryPath, `git commit -m "${commitMessage}"`, { cwd: directoryPath })
+export const commit = async (directoryPath, commitMessage = 'Commit') => (
+  gitCmd(`git commit -m "${commitMessage}"`, { cwd: directoryPath })
 );
 
-export const resetHard = directoryPath => (
-  gitCmd(directoryPath, 'git reset --hard', { cwd: directoryPath })
+export const resetHard = async directoryPath => (
+  gitCmd('git reset --hard', { cwd: directoryPath })
 );
 
-export const cleanFd = directoryPath => (
-  gitCmd(directoryPath, 'git clean -fd', { cwd: directoryPath })
+export const cleanFd = async directoryPath => (
+  gitCmd('git clean -fd', { cwd: directoryPath })
 );

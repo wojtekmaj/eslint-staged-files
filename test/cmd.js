@@ -1,6 +1,6 @@
 const { exec } = require('child_process');
 
-export default (command, options, verbose) => new Promise((resolve, reject) => {
+export default async (command, options, verbose) => new Promise((resolve, reject) => {
   if (!command) {
     reject(new Error('command attribute is required.'));
     return;
