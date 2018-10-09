@@ -10,11 +10,11 @@ steps:
 - script: yarn
   displayName: 'Install dependencies'
 
+- script: yarn build
+  displayName: 'Build'
+
 - script: yarn run test-eslint
   displayName: 'Test: ESLint'
 
 - script: yarn run test-jest
   displayName: 'Test: Jest'
-
-- script: yarn build
-  displayName: 'Build'
