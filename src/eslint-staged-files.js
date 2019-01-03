@@ -2,11 +2,20 @@
 
 const { exec } = require('child_process');
 
-const gitDiff = exec('git diff --staged --diff-filter=ACMTUXB --name-only', { encoding: 'utf8' });
-
-gitDiff.stdout.on('data', (gitOutput) => {
+exec('git diff --staged --diff-filter=ACMTUXB --name-only', (error, stdout, stderr) => {
+  if (error) {
+    console.error(`exec error: ${error}`);
+    return;
+  }
+  if (stderr) {
+    console.error(`git diff error: ${stderr}`);
+    return;
+  }
+  if (!stdout) {
+    return;
+  }
   // Get the list of staged files
-  const files = gitOutput
+  const files = stdout
     .split('\n')
     .map(path => path.trim())
     .filter(Boolean)
@@ -33,8 +42,4 @@ gitDiff.stdout.on('data', (gitOutput) => {
   eslint.on('close', (code) => {
     process.exit(code);
   });
-});
-
-gitDiff.stderr.on('data', (data) => {
-  console.error(`git diff error: ${data}`);
 });
