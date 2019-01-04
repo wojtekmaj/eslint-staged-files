@@ -6,8 +6,9 @@
   "bin": "dist/eslint-staged-files.js",
   "es6": "src/eslint-staged-files.js",
   "scripts": {
-    "build": "babel src -d dist --ignore **/__tests__",
+    "build": "babel src -d dist --ignore **/__tests__ && yarn run chmod-dist",
     "prepublishOnly": "yarn run build",
+    "chmod-dist": "chmod a+x dist/eslint-staged-files.js",
     "test": "yarn run test-eslint && yarn run test-jest",
     "test-eslint": "eslint src/ test/ --ext .jsx,.js",
     "test-jest": "jest",
