@@ -2,20 +2,23 @@
 
 const { exec } = require('child_process');
 
-exec('git diff --staged --diff-filter=ACMTUXB --name-only', (error, stdout, stderr) => {
+exec('git diff --staged --diff-filter=ACMTUXB --name-only', (error, gitOutput, stderr) => {
   if (error) {
     console.error(`exec error: ${error}`);
     return;
   }
+
   if (stderr) {
     console.error(`git diff error: ${stderr}`);
     return;
   }
+
   if (!stdout) {
     return;
   }
+  
   // Get the list of staged files
-  const files = stdout
+  const files = gitOutput
     .split('\n')
     .map(path => path.trim())
     .filter(Boolean)
