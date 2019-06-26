@@ -13,8 +13,8 @@ steps:
 - script: yarn build
   displayName: 'Build'
 
-- script: yarn run test-eslint
+- script: yarn lint
   displayName: 'Test: ESLint'
 
-- script: yarn run test-jest
+- script: yarn jest
   displayName: 'Test: Jest'
