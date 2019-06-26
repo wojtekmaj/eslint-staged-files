@@ -13,10 +13,10 @@ exec('git diff --staged --diff-filter=ACMTUXB --name-only', (error, gitOutput, s
     return;
   }
 
-  if (!stdout) {
+  if (!gitOutput) {
     return;
   }
-  
+
   // Get the list of staged files
   const files = gitOutput
     .split('\n')
