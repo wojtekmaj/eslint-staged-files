@@ -32,7 +32,7 @@ export const stage = async (directoryPath, what) => (
   gitCmd(`git add ${what}`, { cwd: directoryPath })
 );
 
-export const stageAll = async directoryPath => stage(directoryPath, '.');
+export const stageAll = async (directoryPath) => stage(directoryPath, '.');
 
 export const stageFiles = async (directoryPath, filePaths = []) => {
   const result = [];
@@ -51,10 +51,10 @@ export const commit = async (directoryPath, commitMessage = 'Commit') => (
   gitCmd(`git commit -m "${commitMessage}"`, { cwd: directoryPath })
 );
 
-export const resetHard = async directoryPath => (
+export const resetHard = async (directoryPath) => (
   gitCmd('git reset --hard', { cwd: directoryPath })
 );
 
-export const cleanFd = async directoryPath => (
+export const cleanFd = async (directoryPath) => (
   gitCmd('git clean -fd', { cwd: directoryPath })
 );

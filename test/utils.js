@@ -14,7 +14,7 @@ export const createDirectory = async (directoryPath = path.join('.', '.tmp')) =>
   });
 });
 
-export const removeDirectory = async directoryPath => cmd(`rimraf ${directoryPath}`);
+export const removeDirectory = async (directoryPath) => cmd(`rimraf ${directoryPath}`);
 
 export const createFile = (filePath, contents) => new Promise((resolve, reject) => {
   fs.writeFile(filePath, contents, (error) => {

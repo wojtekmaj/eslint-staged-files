@@ -20,9 +20,9 @@ exec('git diff --staged --diff-filter=ACMTUXB --name-only', (error, gitOutput, s
   // Get the list of staged files
   const files = gitOutput
     .split('\n')
-    .map(path => path.trim())
+    .map((path) => path.trim())
     .filter(Boolean)
-    .filter(path => path.endsWith('.js'));
+    .filter((path) => path.endsWith('.js'));
 
   // As ESLint by default runs with no color if executed by exec, add --color flag anyway
   const flags = process.argv.slice(2);
