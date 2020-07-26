@@ -6,6 +6,10 @@
 
 Run ESLint on staged files only.
 
+## Deprecation notice
+
+This package is no longer maintained. We recommend using [lint-staged](https://github.com/okonet/lint-staged) instead.
+
 ## tl;dr
 * Install by executing `npm install eslint-staged-files` or `yarn add eslint-staged-files`.
 * Run just like you would run ESLint, but use `eslint-staged-files` instead of `eslint` in your commands.
